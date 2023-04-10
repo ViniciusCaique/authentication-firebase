@@ -22,18 +22,20 @@ import {
 } from './styles';
 
 export default function Home() {
-  const [task, setTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
 
+  const keyAsyncStorage = '@tasks'
+
   async function addTask() {
-    const search = task.filter(task => task === newTask);
+    const search = tasks.filter(task => task === newTask);
 
     if (search.length !== 0) {
       Alert.alert("Atenção", "Nome da tarefa repetido!");
       return;
     }
 
-    setTask([...task, newTask]);
+    setTasks([...tasks, newTask]);
     setNewTask("");
 
     Keyboard.dismiss();
@@ -53,7 +55,7 @@ export default function Home() {
         },
         {
           text: "OK",
-          onPress: () => setTask(task.filter(tasks => tasks !== item))
+          onPress: () => setTasks(tasks.filter(tasks => tasks !== item))
         }
       ],
       { cancelable: false }
@@ -61,22 +63,22 @@ export default function Home() {
   }
 
   useEffect(() => {
+    async function salvaDados() {
+      AsyncStorage.setItem(keyAsyncStorage, JSON.stringify(tasks));
+    }
+    salvaDados();
+  }, [tasks]);
+
+  useEffect(() => {
     async function carregaDados() {
-      const task = await AsyncStorage.getItem("task");
+      const task = await AsyncStorage.getItem(keyAsyncStorage);
 
       if (task) {
-        setTask(JSON.parse(task));
+        setTasks(JSON.parse(task));
       }
     }
     carregaDados();
   }, []);
-
-  useEffect(() => {
-    async function salvaDados() {
-      AsyncStorage.setItem("task", JSON.stringify(task));
-    }
-    salvaDados();
-  }, [task]);
 
   return (
     <>
@@ -89,7 +91,7 @@ export default function Home() {
         <Container>
           <Body>
             <List
-              data={task}
+              data={tasks}
               keyExtractor={item => item.toString()}
               showsVerticalScrollIndicator={false}
               renderItem={({ item }) => (

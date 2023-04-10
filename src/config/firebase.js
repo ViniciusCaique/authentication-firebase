@@ -1,15 +1,15 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from "firebase/auth";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAuth } from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDP7u_zhvTQSLcW_k_OSf6Grw0Zx283pKw",
-  authDomain: "rn-exemplo01-61c71.firebaseapp.com",
-  databaseURL: "https://rn-exemplo01-61c71-default-rtdb.firebaseio.com",
-  projectId: "rn-exemplo01-61c71",
-  storageBucket: "rn-exemplo01-61c71.appspot.com",
-  messagingSenderId: "854327596853",
-  appId: "1:854327596853:web:b84ed588d78a0fe7eede7c",
-  measurementId: "G-5ZKJZ4ELF2"
+  apiKey: "AIzaSyC7LTCdTBQ2njeggyTbpsBFqpnJvsCSUZU",
+  authDomain: "fir-fiap-a67fc.firebaseapp.com",
+  projectId: "fir-fiap-a67fc",
+  storageBucket: "fir-fiap-a67fc.appspot.com",
+  messagingSenderId: "446740731618",
+  appId: "1:446740731618:web:e5baea405d41cd50feb0bb",
+  measurementId: "G-QDEYZM1FQK"
 };
 
 const app = initializeApp(firebaseConfig);

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useState } from 'react';
 import { auth } from './src/config/firebase';
+import { StatusBar } from 'react-native';
 
 import Login from './src/screens/Login';
 import Home from './src/screens/Home';
@@ -42,8 +43,11 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      {!user ? <LoggedScreens /> : <LoginScreens />}
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        {!user ? <LoggedScreens /> : <LoginScreens />}
+      </NavigationContainer>
+      <StatusBar barStyle={'dark-content'} backgroundColor='transparent' translucent />
+    </>
   );
 }

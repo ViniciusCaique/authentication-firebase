@@ -53,7 +53,7 @@ export const Input = styled.TextInput`
   height: 40px;
   background-color: #eee;
   border-radius: 4px;
-  padding: 10px 5px;
+  padding: 10px 10px;
   border-width: 1px;
   border-color: #eee;
 `;
